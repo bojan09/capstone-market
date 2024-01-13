@@ -9,3 +9,12 @@
 body {
   font-family: "Roboto Condensed", sans-serif;
 }
+
+a,
+li,
+ul,
+Link {
+  text-decoration: none;
+  list-style-type: none;
+  color: #403f3f;
+}
