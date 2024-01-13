@@ -1,11 +1,11 @@
-import "./categories.scss";
+import "./Home.scss";
 // components
-import CategoryItem from "./category-item/CategoryItem";
+import { CategoryItem } from "../../components";
 
 // data
 import { categories } from "../../constants/categories";
 
-const Categories = () => {
+const Home = () => {
   return (
     <div className="categories-container">
       {categories.map((category) => (
@@ -15,4 +15,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Home;
