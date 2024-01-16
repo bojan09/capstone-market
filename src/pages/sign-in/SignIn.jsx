@@ -1,11 +1,14 @@
 import "./SignIn.scss";
 
-import { signInWithGooglePopup } from "../../utility/firebase/firebase";
+import {
+  signInWithGooglePopup,
+  createUserDocumentFromAuth,
+} from "../../utility/firebase/firebase";
 
 const SignIn = () => {
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    console.log(response);
+    const { user } = await signInWithGooglePopup();
+    createUserDocumentFromAuth(user);
   };
   return (
     <div>
