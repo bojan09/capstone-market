@@ -5,14 +5,21 @@ import {
   createUserDocumentFromAuth,
 } from "../../utility/firebase/firebase";
 
+// components
+import { SignUpForm } from "../../components";
+
 const SignIn = () => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = await createUserDocumentFromAuth(user);
   };
+
   return (
-    <div>
-      <button onClick={logGoogleUser}>Sign in</button>
+    <div style={{ display: "flex", gap: "2rem", margin: "2rem" }}>
+      <button style={{ padding: ".5rem" }} onClick={logGoogleUser}>
+        Sign in
+      </button>
+      <SignUpForm />
     </div>
   );
 };
