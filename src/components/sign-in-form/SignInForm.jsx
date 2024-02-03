@@ -1,4 +1,4 @@
-import "./SignIn.scss";
+import "./SignInForm.scss";
 
 import {
   signInWithGooglePopup,
@@ -6,9 +6,9 @@ import {
 } from "../../utility/firebase/firebase";
 
 // components
-import { SignUpForm } from "../../components";
+import { SignUpForm } from "..";
 
-const SignIn = () => {
+const SignInForm = () => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopup();
     const userDocRef = await createUserDocumentFromAuth(user);
@@ -24,4 +24,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignInForm;
