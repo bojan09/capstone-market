@@ -15,10 +15,8 @@ const SignInForm = () => {
   };
 
   return (
-    <div style={{ display: "flex", gap: "2rem", margin: "2rem" }}>
-      <button style={{ padding: ".5rem" }} onClick={logGoogleUser}>
-        Sign in
-      </button>
+    <div>
+      <button onClick={logGoogleUser}>Sign in</button>
       <SignUpForm />
     </div>
   );
