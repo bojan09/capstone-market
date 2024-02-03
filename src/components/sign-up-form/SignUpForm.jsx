@@ -1,3 +1,4 @@
+import "./SignUpForm.scss";
 import { useState } from "react";
 
 // utilities
