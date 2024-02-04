@@ -1,5 +1,5 @@
 import "./SignUpForm.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 // utilities
 import {
@@ -9,6 +9,9 @@ import {
 
 // components
 import { FormInput, Button } from "../";
+
+// context
+import { UserContext } from "../../context/user/user.context";
 
 const defaultFormFields = {
   displayName: "",
@@ -20,6 +23,9 @@ const defaultFormFields = {
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
+  const { setCurrentUser } = useContext(UserContext);
+
+  const value = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -38,6 +44,8 @@ const SignUpForm = () => {
         email,
         password
       );
+
+      setCurrentUser(user);
 
       await createUserDocumentFromAuth(user, { displayName });
 
@@ -66,7 +74,6 @@ const SignUpForm = () => {
           label="Display Name"
           type="text"
           name="displayName"
-          id="displayName"
           required
           onChange={handleChange}
           value={displayName}
@@ -76,7 +83,6 @@ const SignUpForm = () => {
           label="Email"
           type="email"
           name="email"
-          id="email"
           required
           onChange={handleChange}
           value={email}
@@ -86,7 +92,6 @@ const SignUpForm = () => {
           label="Password"
           type="password"
           name="password"
-          id="password"
           minLength={8}
           maxLength={15}
           required
@@ -98,7 +103,6 @@ const SignUpForm = () => {
           label="Confirm Password"
           type="password"
           name="confirmPassword"
-          id="confirmPassword"
           minLength={8}
           maxLength={15}
           required

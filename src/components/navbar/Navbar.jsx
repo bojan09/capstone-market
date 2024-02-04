@@ -9,10 +9,18 @@ import { Logo } from "../../assets";
 // context
 import { UserContext } from "../../context/user/user.context";
 
+// utilites
+import { signOutUser } from "../../utility/firebase/firebase";
+
 const Navbar = () => {
   // context
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOutHandler = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
+
   return (
     <Fragment>
       <div className="navigation">
@@ -23,9 +31,16 @@ const Navbar = () => {
           <Link className="nav-link" to="shop">
             SHOP
           </Link>
-          <Link className="nav-link" to="authentication">
-            SIGN IN
-          </Link>
+
+          {currentUser ? (
+            <span className="nav-link" onClick={signOutHandler}>
+              SIGN OUT
+            </span>
+          ) : (
+            <Link className="nav-link" to="authentication">
+              SIGN IN
+            </Link>
+          )}
         </div>
       </div>
 
