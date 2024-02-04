@@ -1,12 +1,18 @@
 import "./Navbar.scss";
 
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 
 // assets
 import { Logo } from "../../assets";
 
+// context
+import { UserContext } from "../../context/user/user.context";
+
 const Navbar = () => {
+  // context
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
   return (
     <Fragment>
       <div className="navigation">
