@@ -14,11 +14,10 @@ import { signOutUser } from "../../utility/firebase/firebase";
 
 const Navbar = () => {
   // context
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const signOutHandler = async () => {
     await signOutUser();
-    setCurrentUser(null);
   };
 
   return (
