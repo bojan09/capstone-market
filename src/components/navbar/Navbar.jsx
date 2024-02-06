@@ -36,7 +36,7 @@ const Navbar = () => {
               SIGN OUT
             </span>
           ) : (
-            <Link className="nav-link" to="authentication">
+            <Link className="nav-link" to="auth">
               SIGN IN
             </Link>
           )}
