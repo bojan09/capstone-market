@@ -1,4 +1,4 @@
-import "./Navbar.scss";
+import "./Navigation.scss";
 
 import { Fragment, useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { Logo } from "../../assets";
 
 // components
 import CartIcon from "../cart-icon/CartIcon";
+import CartDropdown from "../cart-dropdown/CartDropdown";
 
 // context
 import { UserContext } from "../../context/user/user.context";
@@ -15,7 +16,7 @@ import { UserContext } from "../../context/user/user.context";
 // utilites
 import { signOutUser } from "../../utility/firebase/firebase";
 
-const Navbar = () => {
+const Navigation = () => {
   // context
   const { currentUser } = useContext(UserContext);
 
@@ -45,6 +46,7 @@ const Navbar = () => {
           )}
           <CartIcon />
         </div>
+        <CartDropdown />
       </div>
 
       <Outlet />
@@ -52,4 +54,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navigation;

@@ -2,12 +2,12 @@ import { Routes, Route } from "react-router-dom";
 
 // components
 import { Home } from "./pages";
-import { Navbar, Authentication, Shop } from "./components";
+import { Navigation, Authentication, Shop } from "./components";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Navigation />}>
         <Route index element={<Home />} />
         <Route path="auth" element={<Authentication />} />
         <Route path="shop" element={<Shop />} />
