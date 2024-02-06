@@ -6,6 +6,9 @@ import { Outlet, Link } from "react-router-dom";
 // assets
 import { Logo } from "../../assets";
 
+// components
+import CartIcon from "../cart-icon/CartIcon";
+
 // context
 import { UserContext } from "../../context/user/user.context";
 
@@ -40,6 +43,7 @@ const Navbar = () => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
       </div>
 
