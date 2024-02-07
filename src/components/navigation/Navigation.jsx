@@ -12,6 +12,7 @@ import CartDropdown from "../cart-dropdown/CartDropdown";
 
 // context
 import { UserContext } from "../../context/user/user.context";
+import { CartContext } from "../../context/cart/CartContext";
 
 // utilites
 import { signOutUser } from "../../utility/firebase/firebase";
@@ -19,6 +20,7 @@ import { signOutUser } from "../../utility/firebase/firebase";
 const Navigation = () => {
   // context
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -46,7 +48,7 @@ const Navigation = () => {
           )}
           <CartIcon />
         </div>
-        <CartDropdown />
+        {isCartOpen && <CartDropdown />}
       </div>
 
       <Outlet />

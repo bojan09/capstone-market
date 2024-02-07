@@ -9,13 +9,16 @@ import "./index.scss";
 // context
 import { UserProvider } from "./context/user/user.context";
 import { ProductsProvider } from "./context/products/products.context.jsx";
+import { CartProvider } from "./context/cart/CartContext.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <UserProvider>
       <ProductsProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </ProductsProvider>
     </UserProvider>
   </BrowserRouter>
