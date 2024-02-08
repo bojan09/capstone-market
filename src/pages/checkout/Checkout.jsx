@@ -4,35 +4,36 @@ import { useContext } from "react";
 // context
 import { CartContext } from "../../context/cart/CartContext";
 
+// components
+import { CheckoutItem } from "../../components";
+
 const Checkout = () => {
   const { cartItems, addItemToCart, removeItemFromCart } =
     useContext(CartContext);
 
   return (
-    <div>
-      <h2>Checkout Page</h2>
-      <div>
-        {cartItems.map((cartItem) => {
-          const { id, name, quantity } = cartItem;
-          return (
-            <div key={id}>
-              <h2>{name}</h2>
-              <span>{quantity}</span>
-              <br />
-              <br />
-
-              <button onClick={() => addItemToCart(cartItem)}>increment</button>
-
-              <br />
-              <br />
-
-              <button onClick={() => removeItemFromCart(cartItem)}>
-                decrement
-              </button>
-            </div>
-          );
-        })}
+    <div className="checkout-container">
+      <div className="checkout-header">
+        <div className="header-block">
+          <span>Product</span>
+        </div>
+        <div className="header-block">
+          <span>Description</span>
+        </div>
+        <div className="header-block">
+          <span>Quantity</span>
+        </div>
+        <div className="header-block">
+          <span>Price</span>
+        </div>
+        <div className="header-block">
+          <span>Remove</span>
+        </div>
       </div>
+      {cartItems.map((cartItem) => {
+        return <CheckoutItem key={cartItem.id} cartItem={cartItem} />;
+      })}
+      <span className="total">Total: 0</span>
     </div>
   );
 };
