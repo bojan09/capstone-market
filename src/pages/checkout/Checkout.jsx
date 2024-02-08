@@ -3,10 +3,10 @@ import { useContext } from "react";
 
 // context
 import { CartContext } from "../../context/cart/CartContext";
-import CartDropdown from "../../components/cart-dropdown/CartDropdown";
 
 const Checkout = () => {
-  const { cartItems, addItemToCart } = useContext(CartContext);
+  const { cartItems, addItemToCart, removeItemFromCart } =
+    useContext(CartContext);
 
   return (
     <div>
@@ -26,7 +26,9 @@ const Checkout = () => {
               <br />
               <br />
 
-              <button onClick={() => addItemToCart()}>decrement</button>
+              <button onClick={() => removeItemFromCart(cartItem)}>
+                decrement
+              </button>
             </div>
           );
         })}
