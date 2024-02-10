@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  connectAuthEmulator,
 } from "firebase/auth";
 
 import {
@@ -47,6 +48,14 @@ export const db = getFirestore();
 
 export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
   const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+  await batch.commit();
+  console.log("done");
 };
 
 export const createUserDocumentFromAuth = async (
