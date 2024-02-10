@@ -46,7 +46,10 @@ export const signInWithGoogleRedirect = () =>
 // Firebase Database
 export const db = getFirestore();
 
-export const addCollectionAndDocument = async (collectionKey, objectsToAdd) => {
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
 
