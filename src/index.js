@@ -8,18 +8,18 @@ import "./index.scss";
 
 // context
 import { UserProvider } from "./context/user/user.context";
-import { ProductsProvider } from "./context/products/products.context.jsx";
+import { CategoriesProvider } from "./context/categories/categories.context.jsx";
 import { CartProvider } from "./context/cart/CartContext.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <UserProvider>
-      <ProductsProvider>
+      <CategoriesProvider>
         <CartProvider>
           <App />
         </CartProvider>
-      </ProductsProvider>
+      </CategoriesProvider>
     </UserProvider>
   </BrowserRouter>
 );
