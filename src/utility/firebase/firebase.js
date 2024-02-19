@@ -8,7 +8,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  connectAuthEmulator,
 } from "firebase/auth";
 
 import {
@@ -18,6 +17,8 @@ import {
   setDoc,
   collection,
   writeBatch,
+  query,
+  getDocs,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -59,6 +60,22 @@ export const addCollectionAndDocuments = async (
   });
   await batch.commit();
   console.log("done");
+};
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+
+  const categoryMap = querySnapshot.docs.reduce((accumilator, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    accumilator[title.toLowerCase()] = items;
+
+    return accumilator;
+  }, {});
+
+  return categoryMap;
 };
 
 export const createUserDocumentFromAuth = async (
