@@ -1,4 +1,4 @@
-import "./CartIcon.scss";
+import {} from "./CartIcon.scss";
 import { useContext } from "react";
 
 // context
