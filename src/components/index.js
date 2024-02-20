@@ -1,4 +1,4 @@
-export { default as CategoryItem } from "./categories/category-item/CategoryItem";
+export { default as CategoryItem } from "./categories/category-item/CategoryItem.jsx";
 export { default as Navigation } from "./navigation/Navigation";
 export { default as SignUpForm } from "./sign-up-form/SignUpForm";
 export { default as SignInForm } from "./sign-in-form/SignInForm";
