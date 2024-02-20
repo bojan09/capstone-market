@@ -1,4 +1,4 @@
-import "./Category.jsx";
+import "./Category.scss";
 
 import { useParams } from "react-router";
 import { useContext, useState, useEffect, Fragment } from "react";
