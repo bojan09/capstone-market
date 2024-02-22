@@ -7,3 +7,5 @@ export { default as Button } from "./button/Button";
 export { default as ProductCard } from "./product-card/ProductCard";
 export { default as CategoryPreview } from "./categories/category-preview/CategoryPreview.jsx";
 export { default as CheckoutItem } from "./checkout-item/CheckoutItem";
+export { default as CartIcon } from "./cart-icon/CartIcon.jsx";
+export { default as CartDropdown } from "./cart-dropdown/CartDropdown.jsx";

@@ -1,16 +1,14 @@
-import "./SignInForm.scss";
+import { SignInContainer, ButtonsContainer } from "./SignInForm.styles.jsx";
 
 import { useState } from "react";
 
-// utilities
-import {
-  signInWithGooglePopup,
-  createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utility/firebase/firebase";
+import FormInput from "../form-input/FormInput.jsx";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/Button.jsx";
 
-// components
-import { FormInput, Button } from "../";
+import {
+  signInAuthUserWithEmailAndPassword,
+  signInWithGooglePopup,
+} from "../../utility/firebase/firebase.js";
 
 const defaultFormFields = {
   email: "",
@@ -26,25 +24,17 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
+    await signInWithGooglePopup();
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
-      if (error.code === "auth/invalid-credential") {
-        alert("Incorrect password for email or Email does not exist!");
-      }
-      console.log(error);
-      resetFormFields();
+      console.log("user sign in failed", error);
     }
   };
 
@@ -55,38 +45,39 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      <h2>Sign in to your Account</h2>
+    <SignInContainer>
+      <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
           type="email"
-          name="email"
           required
           onChange={handleChange}
+          name="email"
           value={email}
         />
 
         <FormInput
           label="Password"
           type="password"
-          name="password"
-          minLength={8}
-          maxLength={15}
           required
           onChange={handleChange}
+          name="password"
           value={password}
         />
-
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign In</Button>
-          <Button buttonType="google" type="button" onClick={signInWithGoogle}>
-            Google Sign In
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.google}
+            type="button"
+            onClick={signInWithGoogle}
+          >
+            Sign In With Google
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
