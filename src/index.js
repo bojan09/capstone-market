@@ -10,18 +10,15 @@ import App from "./App";
 import "./index.scss";
 
 // context
-import { CategoriesProvider } from "./context/categories/categories.context.jsx";
 import { CartProvider } from "./context/cart/CartContext.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <CategoriesProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </CategoriesProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
     </BrowserRouter>
   </Provider>
 );
