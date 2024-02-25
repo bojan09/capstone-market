@@ -9,16 +9,11 @@ import { store } from "./store/store.js";
 import App from "./App";
 import "./index.scss";
 
-// context
-import { CartProvider } from "./context/cart/CartContext.jsx";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <App />
     </BrowserRouter>
   </Provider>
 );
