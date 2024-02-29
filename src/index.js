@@ -4,7 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 
 // redux
 import { Provider } from "react-redux";
-import { store } from "./store/store.js";
+import { PersistGate } from "redux-persist/integration/react";
+
+// store
+import { store, persistor } from "./store/store.js";
 
 import App from "./App";
 import "./index.scss";
@@ -12,8 +15,10 @@ import "./index.scss";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </PersistGate>
   </Provider>
 );
